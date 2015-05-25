@@ -373,7 +373,7 @@ var pizzaElementGenerator = function(i) {
   pizzaDescriptionContainer = document.createElement("div");
 
   pizzaContainer.classList.add("randomPizzaContainer");
-  pizzaContainer.classList.add("resizer");
+  pizzaContainer.classList.add("resizer");  // set width with a rule instead
   pizzaContainer.style.height = "325px";
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
   pizzaImageContainer.classList.add("col-md-6");
@@ -505,7 +505,7 @@ var scroller = function () {
   updatePositions(shift);
 };
 
-// runs updatePositions on scroll
+// runs scroller -> updatePositions on scroll
 window.addEventListener('scroll', scroller);
 
 // Generates the sliding pizzas when the page loads.
@@ -528,5 +528,5 @@ document.addEventListener('DOMContentLoaded', function() {
     movingPizzasContainer.appendChild(elem);
   }
   movingPizzas = movingPizzasContainer.childNodes; // set this global now instead of making query during updatePositions
-  updatePositions(5); // send a default value for first time load
+  updatePositions(5); // first time load called with default value
 });
