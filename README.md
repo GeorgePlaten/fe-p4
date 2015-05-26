@@ -101,20 +101,23 @@ href="https://developers.google.com/web/starter-kit/">Web Starter Kit</a>
       to make more sense in global context. <code>movingPizzas</code> is then
       set during the <code>DOMContentLoaded</code> event after all the pizzas
       are added.</li>
+			<li>Cache length of the array in the loop declaration.</li>
       <li>Remove <code>document.body.scrollTop</code> layout tiggering query
       to new intermediate calling <code>scroller()</code> function and pass it
       as parameter <code>shift</code>.</li>
       <li>Make <code>shift</code> a global variable with default value of 5
       to prevent layout thrashing on first page load.</li>
+			<li>Use CSS <code>transform: translateX()</code> property to move the
+			pizza divs instead of <code>left</code> property for improved performance.
     </ol>
   </li>
   <li>
     <strong>main.js</strong>: Improve painting performance while scrolling
     <ol>
-      <li>Dynamically set the number of background pizzas based on screen size
+      <li>Dynamically set the number of background pizzas based on window size
       during <code>DOMContentLoaded</code> event, as painting performance scales
-      with element quantity. Used maximum screen size to save having to 
-      recalculate with each window resize.</li>
+      with element quantity. This also requires an event listener to goldilocks
+			the pizza count when the browser window is resized.</li>
       <li>Add <code>backface-visibility: hidden</code> hack to CSS for mover
       class, and <code>will-change: transform</code> hint for browsers that can
       use it.</li>
@@ -129,8 +132,7 @@ href="https://developers.google.com/web/starter-kit/">Web Starter Kit</a>
       <li>Change determineDx function to return simple percentage value and
       assignment for use in changePizzaSizes.</li>
       <li>Use a style change to change all pizzas at once instead of looping one
-      by one. (determineDx function not now required, and possibly broke the 
-      timing function with its terrible speed).</li>
+      by one. (determineDx function not now required).</li>
     </ol>
   </li>
 </ol>
